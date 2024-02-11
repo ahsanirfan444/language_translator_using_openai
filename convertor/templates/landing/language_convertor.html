@@ -1,0 +1,60 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">  
+  <title>Language Translator</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome CDN Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <div class="heading_container">
+        <section class="animation">
+            <div class="first"><div>Language Translator</div></div>
+            <div class="second"><div>using</div></div>
+            <div class="third"><div>OpenAI APIs</div></div>
+        </section>
+    </div>
+  <div class="container">
+    <form id="SubmitForm" onsubmit="return false;">
+        {% csrf_token %}
+
+    
+
+        <div class="wrapper">
+        <div class="text-input">
+            
+            <textarea spellcheck="false" class="from-text" value="" placeholder="Enter text"></textarea>
+            <textarea spellcheck="false" readonly disabled class="to-text" id="output_text" placeholder="Translation"></textarea>
+        </div>
+        <ul class="controls">
+            <li class="row from">
+            <div class="icons">
+            </div>
+            <select class="from-language"></select>
+            </li>
+            <li class="row to">
+            <select class="to-language"></select>
+            <div class="icons">
+            </div>
+            </li>
+        </ul>
+        </div>
+        <button type="submit">Translate Text</button>
+    </form>
+  </div>
+    <script>
+        var post_data_request = '{% url "language_conventor" %}';
+        var csrf_token = '{{csrf_token}}';
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="{% static 'js/countries.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
