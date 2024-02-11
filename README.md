@@ -1,2 +1,2 @@
-# language_translator_using_openai
+# language translator using openai
 Language Translator App using Openai 
